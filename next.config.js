@@ -10,7 +10,7 @@ module.exports = {
       {
         source: '/api/:path*',
         destination: `${
-          process.env.NODE_ENV !== 'production' ? 'http://localhost:8000' : 'https://api-katy12.herokuapp.com'
+          process.env.NODE_ENV !== 'production' ? 'http://localhost:8000' : 'https://demo-php.weed-finder.store'
         }/api/:path*`, // Proxy to Backend
       },
     ];
