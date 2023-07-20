@@ -1,4 +1,4 @@
-export default function UserProfile({ name, surname, fatherName, login, email, id }) {
+export default function UserInfo({ name, surname, fatherName, login, email, id }) {
   return (
     <article>
       <h2 class='text-lg font-semibold text-slate-900 pt-4 pb-2 px-4 sm:px-6 lg:px-4 xl:px-6 dark:text-slate-100  duration-[1.5s] delay-500'>
