@@ -5,10 +5,12 @@ import { useState } from 'react';
 import { Button, Modal } from 'react-daisyui';
 import Search from '../Search/Search';
 import TextareaReqeuest from '../Textarea/Textarea';
+import UserInfo from '../UserInfo/UserInfo';
 
 export default function FormReqeuest({ login }) {
   const [username, setUserName] = useState(login);
   const [text, setTextArea] = useState('');
+  const [userData, setUserData] = useState(null);
   const [visibleModal, setVisible] = useState(false);
   const [modalInfo, setModalInfo] = useState({
     header: '',
@@ -22,24 +24,37 @@ export default function FormReqeuest({ login }) {
   return (
     <>
       {!login && (
-        <Search
-          placeholder='Найти пользователя'
-          onSearch={(val, setList) => {
-            setUserName(val);
-            getUser(1, val).then((res) => {
-              setList(
-                res.results.map((data) => ({
-                  text: data.login,
-                  data,
-                }))
-              );
-            });
-          }}
-          onClickResult={(userData, setList) => {
-            setUserName(userData.login);
-            setList([]);
-          }}
-        />
+        <>
+          <Search
+            placeholder='Найти пользователя'
+            onSearch={(val, setList) => {
+              console.log(val);
+              getUser(1, val).then((res) => {
+                setList(
+                  res.results.map((data) => ({
+                    text: data.login,
+                    data,
+                  }))
+                );
+              });
+            }}
+            onClickResult={(user, setList) => {
+              setUserData(user);
+              setUserName(user.login);
+              setList([]);
+            }}
+          />
+          {userData && (
+            <UserInfo
+              id={userData.login}
+              name={userData.name}
+              surname={userData.surname}
+              fatherName={userData.fatherName}
+              email={userData.email}
+              login={userData.login}
+            />
+          )}
+        </>
       )}
       <Modal
         open={visibleModal}

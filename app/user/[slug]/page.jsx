@@ -1,7 +1,7 @@
 import Container from '@/components/Container/Container';
 import FormReqeuest from '@/components/FormRequest/FormReqeuest';
 import Header from '@/components/Header/Header';
-import UserProfile from '@/components/UserProfile/UserProfile';
+import UserInfo from '@/components/UserInfo/UserInfo';
 import { getUserByName } from '@/lib/user';
 
 export default async function Page({ params: { slug } }) {
@@ -12,7 +12,7 @@ export default async function Page({ params: { slug } }) {
       <Header />
       {userResponse.ok && (
         <div>
-          <UserProfile
+          <UserInfo
             id={userResponse.user.id}
             email={userResponse.user.email}
             login={userResponse.user.login}

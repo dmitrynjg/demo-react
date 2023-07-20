@@ -6,7 +6,7 @@ export default function Search({ onSearch, onClickResult, placeholder }) {
   const [list, setList] = useState([]);
   const [value, setInputValue] = useState('');
   return (
-    <div class='mx-auto mb-3'>
+    <div className='mx-auto mb-3'>
       <div className='relative'>
         <div className='h-10 bg-white flex border border-gray-200 rounded items-center'>
           <input
